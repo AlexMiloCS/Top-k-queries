@@ -1,4 +1,4 @@
-
+#AM 3045 ONOMA: ALEXANDROS MILONAKIS
 import heapq
 from decimal import Decimal
 class round_robin:
@@ -32,8 +32,7 @@ class round_robin:
         return in_full_score
 
     def split_line(self,line):
-        split_line = line.split()  
- 
+        split_line = line.split()   
         val = Decimal(split_line[1]) 
         index = int(split_line[0])
         return index,val
@@ -78,9 +77,15 @@ class round_robin:
             while obj_counter<self.k: 
                 if file_index == 1:
                     line = file1.readline()
+                    if not line:
+                        line = file2.readline()
+                        if not line:
+                            break
                     file_index = 2
                 else:
                     line = file2.readline()
+                    if not line:
+                        line = file1.readline()
                     file_index = 1
                 index,val = self.split_line(line)
                 in_full_score =self.check_dicts(index,val,file_index)
@@ -92,9 +97,17 @@ class round_robin:
             while self.check_loop():
                 if file_index == 1:
                     line = file1.readline()
+                    if not line:
+                        line = file2.readline()
+                        if not line:
+                            break
                     file_index = 2
                 else:
                     line = file2.readline()
+                    if not line:
+                        line = file1.readline()
+                        if not line:
+                            break
                     file_index = 1
                 index,val = self.split_line(line)
                 self.check_dicts(index,val,file_index)
