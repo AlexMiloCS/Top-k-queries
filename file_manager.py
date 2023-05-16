@@ -1,4 +1,7 @@
 
+from decimal import Decimal
+
+
 class file_manager:
     def __init__(self,path):
         self.path = path
@@ -11,5 +14,5 @@ class file_manager:
 
         for i in range(len(lines)):
             split_line = lines[i].split()
-            R.append(float(split_line[1]))
+            R.append(Decimal(split_line[1]))
         return R
