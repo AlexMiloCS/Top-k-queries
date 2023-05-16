@@ -16,14 +16,18 @@ manager1 = file_manager("C:\\Users\\Alekos\\Desktop\\projects\\Diaxeirisi\\assig
 R = manager1.create_structure()
 
 
-round1 = round_robin(R,"C:\\Users\\Alekos\\Desktop\\projects\\Diaxeirisi\\assignment3\\seq1.txt","C:\\Users\\Alekos\\Desktop\\projects\\Diaxeirisi\\assignment3\\seq2.txt",10)
+round1 = round_robin(R,"C:\\Users\\Alekos\\Desktop\\projects\\Diaxeirisi\\assignment3\\seq1.txt","C:\\Users\\Alekos\\Desktop\\projects\\Diaxeirisi\\assignment3\\seq2.txt",5)
 Wk = round1.do_the_sequence()
 Wk.sort(reverse=True)
-print(Wk)
-print(round1.get_sequential_accesses())
+print("Number of sequential accesses= ",round1.get_sequential_accesses())
+print("Top k objects:")
+for i in range(len(Wk)):
+    print(Wk[i])
+
 
 brute_force1 = brute_force(R,"C:\\Users\\Alekos\\Desktop\\projects\\Diaxeirisi\\assignment3\\seq1.txt","C:\\Users\\Alekos\\Desktop\\projects\\Diaxeirisi\\assignment3\\seq2.txt")
 R_brute = brute_force1.calc_all()
 R_brute.sort(reverse=True)
+print("Brute forcec Top k objects:")
 for i in range(10):
     print(R_brute[i])
